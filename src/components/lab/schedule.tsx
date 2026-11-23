@@ -84,6 +84,7 @@ export function Schedule({
         }
         action={
           <Button
+            disabled={m.batches.length >= 200}
             onClick={() =>
               update({
                 ...m,
@@ -111,6 +112,7 @@ export function Schedule({
                   <Button
                     variant="ghost"
                     aria-label={`複製方案 ${i + 1}`}
+                    disabled={m.batches.length >= 200}
                     onClick={() =>
                       update({
                         ...m,
@@ -119,7 +121,7 @@ export function Schedule({
                           {
                             ...b,
                             id: crypto.randomUUID(),
-                            name: b.name + "（複製）",
+                            name: b.name.slice(0, 96) + "（複製）",
                           },
                         ],
                       })

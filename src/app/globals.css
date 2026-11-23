@@ -129,6 +129,8 @@ select:focus-visible {
   flex-direction: column;
   padding: 28px 14px 12px;
   overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
 }
 .brand {
   display: flex;

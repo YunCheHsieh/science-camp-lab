@@ -37,6 +37,10 @@ export function Records({
   const file = useRef<HTMLInputElement>(null);
   const save = () => {
     if (!draft) return;
+    if (records.length >= 5000 && !records.some((r) => r.id === draft.id)) {
+      setError("最多可保存 5,000 筆，請先匯出並整理現有紀錄。");
+      return;
+    }
     const v = actualSchema.safeParse(draft);
     if (!v.success) {
       setError(v.error.issues.map((e) => e.message).join("；"));
